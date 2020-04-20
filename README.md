@@ -7,6 +7,8 @@ The function replaces the standard Wald variance estimator for binomials, which 
 
 + Wilson, E. B. (1927). Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, 22(158), 209-212.
 
+Note that the function uses a the 97.5% quantile of the standard normal distribution (appr. 1.96) in the calculation of the Wilson variance (as one would use for a two-sided 95% confidence interval).
+
 For more details on the characteristics and calculation of different confidence intervals for proportions see:
 
 + Brown, L. D., Cai, T. T., & DasGupta, A. (2001). Interval estimation for a binomial proportion. *Statistical science*, 101-117.
