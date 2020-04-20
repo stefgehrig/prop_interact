@@ -1,6 +1,7 @@
 # prop_interact
 
-This repository contains two R functions **prop_interact()** and **prop_interact_power()**
+This repository contains two R functions **prop_interact()** and **prop_interact_power()**. 
+For feedback, suggestions and errors, please contact *stefan-gehrig[at]t-online.de*.
 
 ## prop_interact()
 
@@ -26,4 +27,3 @@ An accessible explanation for the test provided by this function, along with a d
 
 This function analyzes the statistical power of tests for interaction using the above method.
 
-For feedback, suggestions and errors, please contact *stefan-gehrig[at]t-online.de*.
