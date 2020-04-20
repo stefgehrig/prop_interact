@@ -1,5 +1,5 @@
 
-test_prop_interact <- function(
+prop_interact <- function(
   data = NULL,         # data frame
   main = NULL,         # column name of variable for main predictor, cannot be empty, 
                        # must be factor or character with exact two levels
@@ -82,9 +82,9 @@ test_prop_interact <- function(
 #   diabetes = sample(c("I", "II", "none"), replace = TRUE, size = 500),
 #   endpoint = sample(c(1, 0), replace = TRUE, size = 500))
 # 
-# test_prop_interact(
-#   data     = df,    
-#   main     = "treatarm",    
+# prop_interact(
+#   data     = df,
+#   main     = "treatarm",
 #   interact = "diabetes",
 #   outcome  = "endpoint",
 #   variance = "Wilson"
