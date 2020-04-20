@@ -5,7 +5,7 @@ For feedback, suggestions and errors, please contact *stefan-gehrig[at]t-online.
 
 ## prop_interact()
 
-This function performs an interaction test for proportional outcome data. The joint Null hypothesis is that the difference in proportions between *2* groups is equal across all *k* subgroups (i.e., outcome data is required for all *2 x k* combinations of the two predictors). All *2 x k* proportions as well as differences in proportions for each subgroup *k* are returned and an overall p-value for the two-sided test of interaction is calculated. The employed test statistic approximately follows a Chi-squared distribution and was described in:
+This function performs an interaction test for proportional outcome data. The joint Null hypothesis is that the difference in proportions between *2* groups is equal across all *k* subgroups (i.e., individual-level outcome data is required for all *2 x k* combinations of the two predictors). All *2 x k* proportions as well as differences in proportions for each subgroup *k* are returned and an overall p-value for the (two-sided) test of interaction is calculated. The employed test statistic approximately follows a Chi-squared distribution and was described in:
 
 + Marascuilo, L. A. (1970). Extensions of the significance test for one-parameter signal detection hypotheses. *Psychometrika*, 35(2), 237-243.
 
@@ -25,5 +25,5 @@ An accessible explanation for the test provided by this function, along with a d
 
 ## prop_interact_power()
 
-This function analyzes the statistical power of tests for interaction using the above method.
+This function analyzes the statistical power of tests for interaction, given proportions and sample sizes for all  *2 x k* combinations of predictors, using the above method.
 
