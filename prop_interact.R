@@ -1,4 +1,3 @@
-
 prop_interact <- function(
   data = NULL,         # data frame
   main = NULL,         # column name of variable for main predictor, cannot be empty, 
@@ -73,7 +72,6 @@ prop_interact <- function(
     "results for each level" = temp_df, 
     "p interaction" = p))
 }
-
 
 ## Example
 
