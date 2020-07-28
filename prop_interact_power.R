@@ -15,7 +15,7 @@ prop_interact_power <- function(props1, # outcome proportions for 1st level of m
 
   if(variance == "Wald"){
     temp_df <- data.frame(
-      pdiff  = props1-props2,
+      prop.diff  = props1-props2,
       n1     = ns1,
       n2     = ns2,
       varsum = props1*(1-props1)/ns1 + props2*(1-props2)/ns2)}
@@ -24,13 +24,13 @@ prop_interact_power <- function(props1, # outcome proportions for 1st level of m
     z <- qnorm(0.025, 0, 1, lower.tail = FALSE)
     
     temp_df <- data.frame(
-      pdiff  = props1-props2,
+      prop.diff  = props1-props2,
       n1     = ns1,
       n2     = ns2,
       varsum = (z^2 + 4*ns1*props1*(1-props1)) / (4*(ns1 + z^2)^2) + (z^2 + 4*ns2*props2*(1-props2)) / (4*(ns2 + z^2)^2))}
   
-  d0 <- sum( temp_df$varsum^-1 * temp_df$pdiff ) / sum( temp_df$varsum^-1 )
-  U  <- sum( temp_df$varsum^-1 * (temp_df$pdiff - d0)^2 )
+  d0 <- sum( temp_df$varsum^-1 * temp_df$prop.diff ) / sum( temp_df$varsum^-1 )
+  U  <- sum( temp_df$varsum^-1 * (temp_df$prop.diff - d0)^2 )
   
   pwr <- pchisq(qchisq(1-sig.level, df = nrow(temp_df)-1), df = 1, ncp = U, lower = FALSE)
   
@@ -40,7 +40,6 @@ prop_interact_power <- function(props1, # outcome proportions for 1st level of m
 }
 
 ## Example
-
 # prop_interact_power(props1 = c(0.94,0.94),
 #                     props2 = c(0.91,0.97),
 #                     ns1 = c(500, 500),
