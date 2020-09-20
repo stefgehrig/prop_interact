@@ -7,6 +7,9 @@ prop_interact <- function(
   outcome = NULL,      # outcome variable, can be factor, character or numeric, cannot be empty, must be binary
   variance = "Wilson"  # either "Wilson" or "Wald"
 ){
+  
+  ### Data checks
+  
   #Input checks
   if (is.null(data))                                             stop ("Provide dataframe")
   if (is.null(main) | !is.character(main))                       stop ("Provide quoted column name for main predictor variable")
@@ -25,14 +28,14 @@ prop_interact <- function(
   if (length(levels(kvar)) < 2)   stop("Predictor for interaction effect does not have two or more levels")
   if (length(levels(outc)) != 2)  stop("Outcome does not have exactly two levels (is not binary)")
   
+  ### Calculate test statistic
+  
   #Create contingency table and extract values for each k
   ct <- addmargins(table(mvar, kvar))
   l <- length(levels(kvar))
-  
-  #Calculate test statistic
-  temp <- list(NA)
-  
+
   #Create contingency tables into a list for calculation
+  temp <- list(NA)
   for (i in seq(1, l ,1)){
     temp[[i]] <- table(mvar[kvar == levels(kvar)[i]], outc[kvar == levels(kvar)[i]])
   }
@@ -68,23 +71,26 @@ prop_interact <- function(
   #Obtain p-value
   p  <- pchisq(U, df = length(levels(kvar)) - 1, lower.tail = FALSE)
   
+  
+  ### Return results
+  
   return(list(
     "results for each level" = temp_df, 
     "statistic" = paste0(round(U,3), " (df = ", length(levels(kvar)) - 1, ")"),
     "p interaction" = p))
 }
 
-## Example
-## Interaction effect of treatment (2 levels) and diabetes subgroups (3 levels) on binary endpoint
-# df <- data.frame(
-#   treatarm = sample(c("control","treat"), replace = TRUE, size = 500),
-#   diabetes = sample(c("I", "II", "none"), replace = TRUE, size = 500),
-#   endpoint = sample(c(1, 0), replace = TRUE, size = 500))
-# 
-# prop_interact(
-#   data     = df,
-#   main     = "treatarm",
-#   interact = "diabetes",
-#   outcome  = "endpoint",
-#   variance = "Wilson"
-# )
+### Example
+### Interaction effect of treatment (2 levels) and diabetes subgroups (3 levels) on binary outcome
+df <- data.frame(
+  treatarm = sample(c("control","treat"), replace = TRUE, size = 500),
+  diabetes = sample(c("I", "II", "none"), replace = TRUE, size = 500),
+  endpoint = sample(c(1, 0), replace = TRUE, size = 500))
+
+prop_interact(
+  data     = df,
+  main     = "treatarm",
+  interact = "diabetes",
+  outcome  = "endpoint",
+  variance = "Wilson"
+)
