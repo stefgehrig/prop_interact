@@ -82,15 +82,15 @@ prop_interact <- function(
 
 ### Example
 ### Interaction effect of treatment (2 levels) and diabetes subgroups (3 levels) on binary outcome
-df <- data.frame(
-  treatarm = sample(c("control","treat"), replace = TRUE, size = 500),
-  diabetes = sample(c("I", "II", "none"), replace = TRUE, size = 500),
-  endpoint = sample(c(1, 0), replace = TRUE, size = 500))
-
-prop_interact(
-  data     = df,
-  main     = "treatarm",
-  interact = "diabetes",
-  outcome  = "endpoint",
-  variance = "Wilson"
-)
+# df <- data.frame(
+#   treatarm = sample(c("control","treat"), replace = TRUE, size = 500),
+#   diabetes = sample(c("I", "II", "none"), replace = TRUE, size = 500),
+#   endpoint = sample(c(1, 0), replace = TRUE, size = 500))
+# 
+# prop_interact(
+#   data     = df,
+#   main     = "treatarm",
+#   interact = "diabetes",
+#   outcome  = "endpoint",
+#   variance = "Wilson"
+# )
