@@ -47,7 +47,7 @@ prop_interact <- function(
   #Calculate variance and proportion difference for each k in the list
   if(variance == "Wald"){
     temp <- lapply(temp, FUN = function(x){c(x, 
-                                             varsum = unname((x[1] * (1-x[1]))/x[3] + (x[1] * (1-x[2]))/x[4]),
+                                             varsum = unname((x[1] * (1-x[1]))/x[3] + (x[2] * (1-x[2]))/x[4]),
                                              prop.diff  = unname((x[1] - x[2])))})}
   
   else{
