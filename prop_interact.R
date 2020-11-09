@@ -51,7 +51,7 @@ prop_interact <- function(
                                              prop.diff  = unname((x[1] - x[2])))})}
   
   else{
-    z <- qnorm(0.025, 0, 1, lower.tail = FALSE)
+    z <- qnorm(0.025, lower.tail = FALSE)
     
     temp <- lapply(temp, FUN = function(x){c(x, 
                                              varsum = unname(
