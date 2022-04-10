@@ -6,7 +6,7 @@ This repository contains two R functions **prop_interact()** and **prop_interact
 
 This function performs an interaction test for proportional outcome data using the method described by Marascuilo (1970). The joint Null hypothesis is that the difference in proportions between *2* groups (e.g., treatment and control) is equal across all *k* subgroups (e.g., people with diabetes type I, people with diabetes type II and people without diabetes). Binary individual-level outcome data is required for all *2 x k* combinations of the two categorical predictors (but the function can easily be modified to run on aggregated data, i.e., *2 x k* contintency tables, directly).
 
-All *2 x k* proportions as well as differences in proportions for each subgroup *k* are returned and an overall p-value for the test of interaction is calculated. The employed test statistic approximately follows a Chi-squared distribution and was described in:
+All *2 x k* proportions as well as differences in proportions for each subgroup *k* are returned and an overall p-value for the test of interaction is calculated. The employed test statistic approximates a Chi-squared distribution and was described in:
 
 + Marascuilo, L. A. (1970). Extensions of the significance test for one-parameter signal detection hypotheses. *Psychometrika*, 35(2), 237-243.
 
