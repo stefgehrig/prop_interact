@@ -32,4 +32,4 @@ Note that the approach is conceptually related to significance testing of intera
 
 This function analyzes the statistical power of tests for interaction, given proportions and sample sizes for all  *2 x k* combinations of predictors, using the above method.
 
-Toy examples on how to use both functions are provided with the scripts. For feedback, suggestions and errors, please contact *stefan-gehrig[at]t-online.de*.
+Toy examples on how to use both functions are provided with the scripts.
