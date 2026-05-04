@@ -4,13 +4,13 @@ This repository contains two R functions **prop_interact()** and **prop_interact
 
 ## prop_interact()
 
-This function performs an interaction test for proportional outcome data using the method described by Marascuilo (1970). The joint Null hypothesis is that the difference in proportions between *2* groups (e.g., treatment and control) is equal across all *k* subgroups (e.g., people with diabetes type I, people with diabetes type II and people without diabetes). Binary individual-level outcome data is required for all *2 x k* combinations of the two categorical predictors (but the function can easily be modified to run on aggregated data, i.e., *2 x k* contintency tables, directly).
+This function performs an interaction test for proportional outcome data using the method described by Marascuilo (1970) and Michael (2007). The joint Null hypothesis is that the difference in proportions between *2* groups (e.g., treatment and control) is equal across all *k* subgroups (e.g., people with diabetes type I, people with diabetes type II and people without diabetes). Binary individual-level outcome data is required for all *2 x k* combinations of the two categorical predictors (but the function can easily be modified to run on aggregated data, i.e., *2 x k* contintency tables, directly).
 
 All *2 x k* proportions as well as differences in proportions for each subgroup *k* are returned and an overall *p*-value for the test of interaction is calculated. The employed test statistic approximates a Chi-squared distribution and was described in:
 
 + Marascuilo, L. A. (1970). Extensions of the significance test for one-parameter signal detection hypotheses. *Psychometrika*, 35(2), 237-243.
 
-By default, the function replaces the standard Wald variance estimator for binomials, which has weaknesses in particular for proportions close to 0 or 1, by a variance estimator that is based on the Wilson score confidence interval (but Wald variance can be used as well):<sup>1</sup>
+By default, the function replaces the standard variance estimator for binomials, which is conventionally used to construct Wald confidence intervals and has weaknesses in particular for proportions close to 0 or 1, by a variance estimator that is based on the Wilson score confidence interval (but Wald interval's variance can be used as well):<sup>1</sup>
 
 + Wilson, E. B. (1927). Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, 22(158), 209-212.
 
@@ -24,9 +24,9 @@ An accessible explanation for the statistical test provided by the function in t
 
 + Michael, G. A. (2007). A significance test of interaction in 2xK designs with proportions. *Tutorials in Quantitative Methods for Psychology*, 3(1), 1-7.
 
-Note that the approach is conceptually related to significance testing of interaction terms in logistic regression. It leads to similar inferences without explicitly employing a generalized linear modelling framework.
+Note that the approach is conceptually related to significance testing of interaction terms with categorical predictors in logistic regression, or the Breslow-Day Test for homogeneity of odds ratios. It usually leads to similar inferences, but does not explicitly invoke logistic regression or the estimation of odds ratios. The function presented here tests for proportion differences instead.
 
-<sup>1</sup><sub>The variance estimator based on the score interval roughly has the form of a weighted average of the variance of the observed proportion and the variance at p = 1/2, with a standard normal quantile determining the weight put on the latter (Agresti & Coull, 1998). The function presented here uses the 0.975-quantile (*z* = 1.96) for variance estimation, as one would when constructing a two-sided 95% Wilson score interval. Note that this variance estimator approximates the Wald variance for large N and is equal to it for *z* = 0.</sub>
+<sup>1</sup><sub>The variance estimator based on the score interval roughly has the form of a weighted average of the variance of the observed proportion and the variance at p = 1/2, with a standard normal quantile determining the weight put on the latter (Agresti & Coull, 1998). The function presented here uses the 0.975-quantile (*z* = 1.96) for variance estimation, as one would when constructing a two-sided 95% Wilson score interval. Note that this variance estimator converges to the Wald interval's variance for large N and is equal to it for *z* = 0.</sub>
 
 ## prop_interact_power()
 

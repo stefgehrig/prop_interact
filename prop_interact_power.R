@@ -4,7 +4,7 @@ prop_interact_power <- function(props1, # outcome proportions for 1st level of m
                                 ns1,    # sample sizes for 1st level of main predictor (one element for each of k levels of interaction predictor)
                                 ns2,    # sample sizes for 2nd level of main predictor (one element for each of k levels of interaction predictor)
                                 sig.level = 0.05, # desired level of significance
-                                variance = NULL){ # either "Wilson" or "Wald"
+                                variance = "Wilson"){ # either "Wilson" or "Wald"
   
   if(!(length(props1) == length(props2) & length(ns1) == length(ns2) & 
      length(props1) == length(ns1)))                                    stop ("Input vectors do not all have equal length")
@@ -32,7 +32,8 @@ prop_interact_power <- function(props1, # outcome proportions for 1st level of m
   d0 <- sum( temp_df$varsum^-1 * temp_df$prop.diff ) / sum( temp_df$varsum^-1 )
   U  <- sum( temp_df$varsum^-1 * (temp_df$prop.diff - d0)^2 )
   
-  pwr <- pchisq(qchisq(1-sig.level, df = nrow(temp_df)-1), df = 1, ncp = U, lower = FALSE)
+  pwr <- pchisq(qchisq(1-sig.level, df = nrow(temp_df)-1), 
+                df = nrow(temp_df)-1, ncp = U, lower.tail = FALSE)
   
   return(list(specification = temp_df,
               sig.level = sig.level,

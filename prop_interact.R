@@ -15,7 +15,7 @@ prop_interact <- function(
   if (is.null(main) | !is.character(main))                       stop ("Provide quoted column name for main predictor variable")
   if (is.null(interact) | !is.character(interact))               stop ("Provide quoted column name for interaction predictor variable")
   if (is.null(variance) | !variance %in% c("Wilson", "Wald"))    stop ("Choose a variance estimator, either 'Wald' or 'Wilson'")
-  if (is.null(outcome))                                          stop ("Provide a quoted column name for outcome variable")
+  if (is.null(outcome)  | !is.character(outcome))                stop ("Provide a quoted column name for outcome variable")
 
   #Input transformations
   data <- as.data.frame(data)
@@ -30,8 +30,7 @@ prop_interact <- function(
   
   ### Calculate test statistic
   
-  #Create contingency table and extract values for each k
-  ct <- addmargins(table(mvar, kvar))
+  #Count number of levels
   l <- length(levels(kvar))
 
   #Create contingency tables into a list for calculation
